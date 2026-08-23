@@ -1,0 +1,3261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Your Best Year — 2026 Reckoning</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+  --bg:#12151c;
+  --panel:#191d27;
+  --panel-raised:#20242f;
+  --line:#333a4a;
+  --line-soft:#262b38;
+  --ink:#eee9dd;
+  --ink-dim:#a8aab5;
+  --ink-faint:#6b6f7d;
+  --gold:#d6a94b;
+  --gold-dim:#8a7439;
+  --teal:#5a9c8f;
+  --teal-dim:#3c6a62;
+  --rose:#c1596a;
+  --rose-dim:#7f3b47;
+  --radius:14px;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html,
+body{
+  margin:0;
+  padding:0;
+  min-height:100%;
+}
+
+body{
+  background:
+    radial-gradient(
+      ellipse 900px 500px at 15% -10%,
+      rgba(214,169,75,0.08),
+      transparent 60%
+    ),
+    radial-gradient(
+      ellipse 700px 500px at 100% 10%,
+      rgba(90,156,143,0.07),
+      transparent 55%
+    ),
+    var(--bg);
+
+  color:var(--ink);
+  font-family:'Space Grotesk',sans-serif;
+  -webkit-font-smoothing:antialiased;
+  min-height:100vh;
+}
+
+.display{
+  font-family:'Fraunces',serif;
+}
+
+.mono{
+  font-family:'IBM Plex Mono',monospace;
+}
+
+::selection{
+  background:var(--gold);
+  color:#181a20;
+}
+
+/* =========================================================
+   APP
+========================================================= */
+
+.app{
+  display:grid;
+  grid-template-columns:240px minmax(0,1fr);
+  max-width:1180px;
+  margin:0 auto;
+  min-height:100vh;
+}
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.nav{
+  position:sticky;
+  top:0;
+  align-self:start;
+  height:100vh;
+
+  padding:36px 22px;
+
+  display:flex;
+  flex-direction:column;
+
+  border-right:1px solid var(--line-soft);
+}
+
+.nav__title{
+  font-size:13px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--ink-faint);
+  margin-bottom:4px;
+}
+
+.nav__year{
+  font-family:'Fraunces',serif;
+  font-size:26px;
+  margin:0 0 30px;
+  font-weight:600;
+}
+
+.nav__year span{
+  color:var(--gold);
+}
+
+.nav__item{
+  appearance:none;
+  -webkit-appearance:none;
+
+  width:100%;
+
+  display:flex;
+  align-items:center;
+  gap:10px;
+
+  padding:11px 4px 11px 14px;
+
+  border:0;
+  border-left:2px solid var(--line-soft);
+
+  background:transparent;
+
+  color:var(--ink-dim);
+
+  font-family:'Space Grotesk',sans-serif;
+  font-size:14.5px;
+  text-align:left;
+
+  cursor:pointer;
+
+  transition:
+    color .15s ease,
+    border-color .15s ease,
+    background .15s ease;
+}
+
+.nav__item:hover{
+  color:var(--ink);
+}
+
+.nav__item.active{
+  color:var(--ink);
+  border-left-color:var(--gold);
+  font-weight:500;
+}
+
+.nav__dot{
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  background:var(--line);
+  flex:none;
+}
+
+.nav__dot.done{
+  background:var(--gold);
+  box-shadow:0 0 0 3px rgba(214,169,75,.15);
+}
+
+.nav__foot{
+  margin-top:auto;
+  padding-top:20px;
+  border-top:1px solid var(--line-soft);
+
+  font-size:12px;
+  color:var(--ink-faint);
+  line-height:1.6;
+}
+
+.nav__progress-track{
+  height:4px;
+  border-radius:2px;
+  background:var(--line-soft);
+  overflow:hidden;
+  margin-top:10px;
+}
+
+.nav__progress-fill{
+  height:100%;
+  width:0%;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--rose),
+      var(--gold),
+      var(--teal)
+    );
+
+  transition:width .4s ease;
+}
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+main{
+  padding:56px 44px 120px;
+  max-width:760px;
+  width:100%;
+}
+
+section{
+  display:none;
+}
+
+section.active{
+  display:block;
+  animation:rise .35s ease;
+}
+
+@keyframes rise{
+  from{
+    opacity:0;
+    transform:translateY(8px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+/* =========================================================
+   TYPOGRAPHY
+========================================================= */
+
+.eyebrow{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:12px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--gold);
+  margin-bottom:14px;
+  display:block;
+}
+
+h1.page-title{
+  font-family:'Fraunces',serif;
+  font-size:clamp(30px,4vw,44px);
+  font-weight:600;
+  margin:0 0 16px;
+  line-height:1.08;
+}
+
+.lede{
+  color:var(--ink-dim);
+  font-size:16.5px;
+  line-height:1.6;
+  max-width:56ch;
+  margin-bottom:36px;
+}
+
+.quote{
+  border-left:2px solid var(--gold-dim);
+  padding:4px 0 4px 20px;
+  margin:34px 0;
+
+  font-family:'Fraunces',serif;
+  font-weight:500;
+  font-style:italic;
+  font-size:19px;
+
+  color:var(--ink);
+  line-height:1.5;
+}
+
+.qnum{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+
+  width:30px;
+  height:30px;
+
+  border-radius:50%;
+  border:1px solid var(--gold-dim);
+
+  color:var(--gold);
+
+  font-family:'IBM Plex Mono',monospace;
+  font-size:13px;
+
+  margin-right:10px;
+  flex:none;
+}
+
+h2.q-title{
+  display:flex;
+  align-items:center;
+
+  font-size:24px;
+  font-weight:600;
+
+  margin:44px 0 6px;
+}
+
+.q-sub{
+  color:var(--ink-dim);
+  font-size:14.5px;
+  line-height:1.55;
+
+  margin:0 0 18px 40px;
+
+  max-width:54ch;
+}
+
+/* =========================================================
+   FORM ELEMENTS
+========================================================= */
+
+textarea,
+input[type="text"]{
+  width:100%;
+
+  background:var(--panel);
+
+  border:1px solid var(--line);
+  border-radius:10px;
+
+  color:var(--ink);
+
+  font-family:'Space Grotesk',sans-serif;
+  font-size:15px;
+
+  padding:12px 14px;
+
+  resize:vertical;
+  line-height:1.55;
+
+  transition:
+    border-color .15s ease,
+    background .15s ease;
+}
+
+textarea:focus,
+input[type="text"]:focus{
+  outline:none;
+  border-color:var(--gold-dim);
+  background:var(--panel-raised);
+}
+
+textarea::placeholder,
+input::placeholder{
+  color:var(--ink-faint);
+}
+
+.field{
+  margin:0 0 40px 40px;
+}
+
+.field label.flabel{
+  display:block;
+  font-size:13px;
+  color:var(--ink-faint);
+  margin-bottom:8px;
+  letter-spacing:.02em;
+}
+
+/* =========================================================
+   MONTH WHEEL
+========================================================= */
+
+.wheel-wrap{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  margin:8px 0 44px;
+}
+
+.wheel{
+  position:relative;
+  width:280px;
+  height:280px;
+
+  margin:10px auto 22px;
+}
+
+.wheel__center{
+  position:absolute;
+
+  top:50%;
+  left:50%;
+
+  transform:translate(-50%,-50%);
+
+  text-align:center;
+
+  width:110px;
+
+  pointer-events:none;
+}
+
+.wheel__center .n{
+  font-family:'Fraunces',serif;
+  font-size:30px;
+  font-weight:600;
+  color:var(--gold);
+}
+
+.wheel__center .l{
+  font-size:11px;
+  color:var(--ink-faint);
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+
+.month-btn{
+  position:absolute;
+
+  width:54px;
+  height:54px;
+
+  margin:-27px;
+
+  border-radius:50%;
+  border:1px solid var(--line);
+
+  background:var(--panel);
+
+  color:var(--ink-dim);
+
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  cursor:pointer;
+
+  transition:all .15s ease;
+}
+
+.month-btn:hover{
+  border-color:var(--ink-faint);
+  color:var(--ink);
+}
+
+.month-btn.filled{
+  background:var(--teal-dim);
+  border-color:var(--teal);
+  color:var(--ink);
+}
+
+.month-btn.selected{
+  outline:2px solid var(--gold);
+  outline-offset:2px;
+}
+
+.month-panel{
+  width:100%;
+  max-width:480px;
+
+  background:var(--panel);
+
+  border:1px solid var(--line-soft);
+  border-radius:var(--radius);
+
+  padding:20px 22px;
+}
+
+.month-panel h3{
+  margin:0 0 10px;
+  font-size:17px;
+  font-weight:600;
+  color:var(--gold);
+}
+
+/* =========================================================
+   NUMBERED LISTS
+========================================================= */
+
+.num-list{
+  margin:0 0 40px 40px;
+
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+.num-list .row{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.num-list .idx{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:13px;
+  color:var(--ink-faint);
+  width:16px;
+  flex:none;
+}
+
+.num-list input{
+  flex:1;
+}
+
+/* =========================================================
+   STOP / CONTINUE / START
+========================================================= */
+
+.sc-block{
+  border:1px solid var(--line-soft);
+  border-radius:var(--radius);
+
+  padding:22px 22px 6px;
+
+  margin-bottom:22px;
+
+  background:var(--panel);
+}
+
+.sc-block .sc-head{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:14px;
+}
+
+.sc-block .sc-head .tag{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+
+  padding:4px 10px;
+  border-radius:20px;
+}
+
+.tag.stop{
+  background:rgba(193,89,106,.15);
+  color:var(--rose);
+  border:1px solid var(--rose-dim);
+}
+
+.tag.cont{
+  background:rgba(90,156,143,.15);
+  color:var(--teal);
+  border:1px solid var(--teal-dim);
+}
+
+.tag.start{
+  background:rgba(214,169,75,.15);
+  color:var(--gold);
+  border:1px solid var(--gold-dim);
+}
+
+.sc-main{
+  width:100%;
+
+  background:transparent;
+  border:0;
+  border-bottom:1px solid var(--line);
+
+  font-family:'Fraunces',serif;
+  font-size:18px;
+
+  color:var(--ink);
+
+  padding:6px 2px 10px;
+
+  margin-bottom:16px;
+}
+
+.sc-main:focus{
+  outline:none;
+  border-color:var(--gold-dim);
+}
+
+.sc-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+
+  gap:14px;
+
+  margin-bottom:18px;
+}
+
+.sc-grid .mini-label{
+  font-size:12.5px;
+  color:var(--ink-faint);
+
+  margin-bottom:6px;
+
+  display:block;
+  line-height:1.4;
+}
+
+.sc-grid textarea{
+  min-height:70px;
+  font-size:14px;
+}
+
+/* =========================================================
+   LIFE CHECK-IN
+========================================================= */
+
+.life-item{
+  border-bottom:1px solid var(--line-soft);
+  padding:24px 0;
+}
+
+.life-item:first-child{
+  padding-top:0;
+}
+
+.life-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  margin-bottom:10px;
+}
+
+.life-head .lname{
+  font-family:'Fraunces',serif;
+  font-size:19px;
+  font-weight:600;
+}
+
+.life-head .lval{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:15px;
+  color:var(--gold);
+}
+
+input[type="range"]{
+  -webkit-appearance:none;
+
+  width:100%;
+  height:4px;
+
+  border-radius:2px;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--rose-dim),
+      var(--gold-dim),
+      var(--teal-dim)
+    );
+
+  margin:6px 0 12px;
+}
+
+input[type="range"]::-webkit-slider-thumb{
+  -webkit-appearance:none;
+
+  width:16px;
+  height:16px;
+
+  border-radius:50%;
+
+  background:var(--ink);
+
+  border:2px solid var(--gold);
+
+  cursor:pointer;
+}
+
+input[type="range"]::-moz-range-thumb{
+  width:16px;
+  height:16px;
+
+  border-radius:50%;
+
+  background:var(--ink);
+
+  border:2px solid var(--gold);
+
+  cursor:pointer;
+}
+
+.life-scale{
+  display:flex;
+  justify-content:space-between;
+
+  font-size:10.5px;
+  color:var(--ink-faint);
+
+  margin-top:-8px;
+}
+
+.life-item textarea{
+  min-height:52px;
+  font-size:14px;
+  margin-top:4px;
+}
+
+/* =========================================================
+   GOAL
+========================================================= */
+
+.step{
+  border-left:2px solid var(--line-soft);
+
+  padding:2px 0 2px 22px;
+
+  margin-bottom:34px;
+
+  position:relative;
+}
+
+.step::before{
+  content:attr(data-n);
+
+  position:absolute;
+
+  left:-13px;
+  top:0;
+
+  width:24px;
+  height:24px;
+
+  border-radius:50%;
+
+  background:var(--bg);
+
+  border:1px solid var(--gold-dim);
+
+  color:var(--gold);
+
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.step h3{
+  margin:2px 0 6px;
+  font-size:18px;
+  font-weight:600;
+}
+
+.step p.hint{
+  color:var(--ink-dim);
+  font-size:14px;
+  line-height:1.55;
+
+  margin:0 0 14px;
+}
+
+.step textarea{
+  margin-bottom:10px;
+}
+
+.step .grid2{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+}
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.section-nav{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  gap:12px;
+
+  margin-top:56px;
+
+  padding-top:24px;
+
+  border-top:1px solid var(--line-soft);
+}
+
+.btn{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:14px;
+  font-weight:500;
+
+  padding:11px 20px;
+
+  border-radius:30px;
+
+  cursor:pointer;
+
+  border:1px solid var(--line);
+
+  background:transparent;
+
+  color:var(--ink);
+
+  transition:all .15s ease;
+}
+
+.btn:hover{
+  border-color:var(--gold-dim);
+  color:var(--gold);
+}
+
+.btn.primary{
+  background:var(--gold);
+  color:#181a20;
+  border-color:var(--gold);
+  font-weight:600;
+}
+
+.btn.primary:hover{
+  background:#e2b95c;
+  color:#181a20;
+}
+
+.btn:disabled{
+  opacity:.3;
+  cursor:default;
+}
+
+/* =========================================================
+   SAVE PILL
+========================================================= */
+
+.save-pill{
+  position:fixed;
+
+  bottom:20px;
+  right:24px;
+
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11.5px;
+
+  color:var(--ink-faint);
+
+  background:var(--panel);
+
+  border:1px solid var(--line-soft);
+
+  padding:7px 14px;
+
+  border-radius:20px;
+
+  opacity:0;
+
+  transition:opacity .3s ease;
+
+  display:flex;
+  align-items:center;
+  gap:7px;
+
+  z-index:60;
+}
+
+.save-pill.show{
+  opacity:1;
+}
+
+.save-pill .dot{
+  width:6px;
+  height:6px;
+
+  border-radius:50%;
+
+  background:var(--teal);
+}
+
+/* =========================================================
+   CLOSING
+========================================================= */
+
+.closing{
+  text-align:center;
+  padding:60px 20px;
+}
+
+.closing .n{
+  font-family:'Fraunces',serif;
+  font-size:40px;
+  font-weight:600;
+  margin-bottom:6px;
+}
+
+.closing p{
+  color:var(--ink-dim);
+  max-width:46ch;
+
+  margin:0 auto 22px;
+
+  line-height:1.6;
+}
+
+/* =========================================================
+   RESET
+========================================================= */
+
+.reset-btn{
+  margin-top:16px;
+
+  border:0;
+  background:none;
+
+  color:var(--ink-faint);
+
+  font-family:'Space Grotesk',sans-serif;
+  font-size:11px;
+
+  cursor:pointer;
+}
+
+.reset-btn:hover{
+  color:var(--rose);
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:900px){
+
+  .app{
+    grid-template-columns:1fr;
+  }
+
+  .nav{
+    position:sticky;
+    top:0;
+
+    z-index:50;
+
+    grid-row:1;
+
+    width:100%;
+    height:auto;
+
+    display:flex;
+    flex-direction:row;
+
+    overflow-x:auto;
+
+    padding:10px 14px;
+    gap:6px;
+
+    background:rgba(18,21,28,.94);
+
+    backdrop-filter:blur(8px);
+
+    border-right:0;
+    border-bottom:1px solid var(--line-soft);
+  }
+
+  .nav__title,
+  .nav__foot{
+    display:none;
+  }
+
+  .nav__year{
+    display:none;
+  }
+
+  .nav__item{
+    width:auto;
+
+    white-space:nowrap;
+
+    border-left:0;
+
+    padding:8px 12px;
+
+    border-radius:20px;
+
+    border:1px solid var(--line-soft);
+
+    flex:none;
+  }
+
+  .nav__item.active{
+    background:var(--panel-raised);
+    border-color:var(--gold-dim);
+  }
+
+  .nav__dot{
+    display:none;
+  }
+}
+
+@media(max-width:640px){
+
+  main{
+    padding:32px 18px 100px;
+  }
+
+  .sc-grid{
+    grid-template-columns:1fr;
+  }
+
+  .step .grid2{
+    grid-template-columns:1fr;
+  }
+
+  .section-nav{
+    align-items:stretch;
+  }
+
+  .section-nav .btn{
+    flex:1;
+  }
+
+  .field,
+  .num-list{
+    margin-left:0;
+  }
+
+  .q-sub{
+    margin-left:0;
+  }
+
+  .wheel{
+    transform:scale(.9);
+    transform-origin:center;
+    margin-bottom:4px;
+  }
+
+  .month-panel{
+    width:100%;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+  <!-- =====================================================
+       NAV
+  ====================================================== -->
+
+  <nav class="nav" aria-label="Best Year navigation">
+
+    <div class="nav__title">
+      Private &amp; autosaved
+    </div>
+
+    <h1 class="nav__year">
+      Best Year <span>2026</span>
+    </h1>
+
+    <button
+      type="button"
+      class="nav__item active"
+      data-section="s-looking-back"
+    >
+      <span class="nav__dot" id="dot-back"></span>
+      Looking Back
+    </button>
+
+    <button
+      type="button"
+      class="nav__item"
+      data-section="s-checkin"
+    >
+      <span class="nav__dot" id="dot-checkin"></span>
+      Life Check-In
+    </button>
+
+    <button
+      type="button"
+      class="nav__item"
+      data-section="s-looking-forward"
+    >
+      <span class="nav__dot" id="dot-forward"></span>
+      Looking Forward
+    </button>
+
+    <button
+      type="button"
+      class="nav__item"
+      data-section="s-goal"
+    >
+      <span class="nav__dot" id="dot-goal"></span>
+      Your One Goal
+    </button>
+
+    <button
+      type="button"
+      class="nav__item"
+      data-section="s-done"
+    >
+      <span class="nav__dot" id="dot-done"></span>
+      You Did It
+    </button>
+
+    <div class="nav__foot">
+
+      Answers save automatically to this device as you go.
+
+      <div class="nav__progress-track">
+        <div
+          class="nav__progress-fill"
+          id="progress-fill"
+        ></div>
+      </div>
+
+    </div>
+
+  </nav>
+
+  <!-- =====================================================
+       MAIN
+  ====================================================== -->
+
+  <main>
+
+    <!-- ===================================================
+         LOOKING BACK
+    ==================================================== -->
+
+    <section id="s-looking-back" class="active">
+
+      <span class="eyebrow">Part 1</span>
+
+      <h1 class="page-title">
+        Looking Back
+      </h1>
+
+      <p class="lede">
+        You're here because you're ready for more:
+        more clarity, more control, more growth.
+        You can't decide where you're going until you're
+        honest about where you're starting.
+      </p>
+
+      <div class="quote">
+        An amazing year doesn't happen by chance.<br>
+        It happens by choice.
+      </div>
+
+      <h2 style="font-size:19px;font-weight:600;margin:40px 0 4px;">
+        What moments stand out to you?
+      </h2>
+
+      <p
+        class="q-sub"
+        style="margin-left:0;"
+      >
+        Scroll your camera roll or calendar for each month.
+        Note the big moments, the hard moments, and the small
+        quiet ones — no judgment, just gathering.
+      </p>
+
+      <div class="wheel-wrap">
+
+        <div class="wheel" id="wheel">
+
+          <div class="wheel__center">
+
+            <div
+              class="n"
+              id="wheel-count"
+            >
+              0/12
+            </div>
+
+            <div class="l">
+              months noted
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="month-panel">
+
+          <h3 id="month-panel-title">
+            January
+          </h3>
+
+          <textarea
+            id="month-input"
+            rows="4"
+            placeholder="What happened this month? A moment, a win, a low, anything that shaped the month..."
+          ></textarea>
+
+        </div>
+
+      </div>
+
+      <h2 class="q-title">
+        <span class="qnum">1</span>
+        What were the low points of the past year?
+      </h2>
+
+      <p class="q-sub">
+        Don't judge or limit yourself. Just write.
+      </p>
+
+      <div class="field">
+        <textarea
+          id="q1-main"
+          rows="5"
+          placeholder="Write freely..."
+        ></textarea>
+      </div>
+
+      <p
+        class="q-sub"
+        style="margin-top:-10px;"
+      >
+        What low points stand out from your camera roll or calendar?
+      </p>
+
+      <div
+        class="num-list"
+        id="q1-list"
+      ></div>
+
+      <p class="q-sub">
+        What did you need most during those low moments?
+      </p>
+
+      <div class="field">
+        <textarea
+          id="q1-needed"
+          rows="3"
+          placeholder="..."
+        ></textarea>
+      </div>
+
+      <h2 class="q-title">
+        <span class="qnum">2</span>
+        What were the high points of the past year?
+      </h2>
+
+      <div class="field">
+        <textarea
+          id="q2-main"
+          rows="5"
+          placeholder="Write freely..."
+        ></textarea>
+      </div>
+
+      <p
+        class="q-sub"
+        style="margin-top:-10px;"
+      >
+        What high points stand out from your camera roll or calendar?
+      </p>
+
+      <div
+        class="num-list"
+        id="q2-list"
+      ></div>
+
+      <p class="q-sub">
+        What were the common threads across your best moments?
+      </p>
+
+      <div class="field">
+        <textarea
+          id="q2-threads"
+          rows="3"
+          placeholder="..."
+        ></textarea>
+      </div>
+
+      <h2 class="q-title">
+        <span class="qnum">3</span>
+        What did you learn about yourself over the past year?
+      </h2>
+
+      <p class="q-sub">
+        Everything that happened in 2026 taught you something.
+        Name the lesson, turn experience into wisdom.
+      </p>
+
+      <div id="q3-pairs"></div>
+
+      <div class="section-nav">
+
+        <span></span>
+
+        <button
+          type="button"
+          class="btn primary"
+          data-goto="s-checkin"
+        >
+          Continue to Life Check-In →
+        </button>
+
+      </div>
+
+    </section>
+
+    <!-- ===================================================
+         LIFE CHECK-IN
+    ==================================================== -->
+
+    <section id="s-checkin">
+
+      <span class="eyebrow">
+        The Check-In
+      </span>
+
+      <h1 class="page-title">
+        Your Life Right Now
+      </h1>
+
+      <p class="lede">
+        Rate each area of your life. This surfaces the patterns,
+        the pressure points, and the places you felt most like
+        yourself this year.
+      </p>
+
+      <div id="life-list"></div>
+
+      <div class="section-nav">
+
+        <button
+          type="button"
+          class="btn"
+          data-goto="s-looking-back"
+        >
+          ← Looking Back
+        </button>
+
+        <button
+          type="button"
+          class="btn primary"
+          data-goto="s-looking-forward"
+        >
+          Continue to Looking Forward →
+        </button>
+
+      </div>
+
+    </section>
+
+    <!-- ===================================================
+         LOOKING FORWARD
+    ==================================================== -->
+
+    <section id="s-looking-forward">
+
+      <span class="eyebrow">
+        Part 2
+      </span>
+
+      <h1 class="page-title">
+        Looking Forward
+      </h1>
+
+      <p class="lede">
+        You've pulled out the highs, the lows, and the lessons.
+        Now turn that into a plan: what to stop, what's worth
+        continuing, and what you're ready to start.
+      </p>
+
+      <div class="quote">
+        There's a big difference between quitting something
+        out of fear and quitting something because it no longer
+        aligns with your values.
+      </div>
+
+      <h2 class="q-title">
+        <span class="qnum">4</span>
+        What will you STOP doing?
+      </h2>
+
+      <p class="q-sub">
+        Quitting what no longer serves you frees your time,
+        energy, and focus.
+      </p>
+
+      <div id="stop-list"></div>
+
+      <h2 class="q-title">
+        <span class="qnum">5</span>
+        What will you CONTINUE doing?
+      </h2>
+
+      <p class="q-sub">
+        Continuing what's working keeps your momentum —
+        you're not starting from scratch.
+      </p>
+
+      <div id="cont-list"></div>
+
+      <h2 class="q-title">
+        <span class="qnum">6</span>
+        What will you START doing?
+      </h2>
+
+      <p class="q-sub">
+        Even one small new beginning can make your whole year
+        feel more alive.
+      </p>
+
+      <div id="start-list"></div>
+
+      <div class="section-nav">
+
+        <button
+          type="button"
+          class="btn"
+          data-goto="s-checkin"
+        >
+          ← Life Check-In
+        </button>
+
+        <button
+          type="button"
+          class="btn primary"
+          data-goto="s-goal"
+        >
+          Continue to Your One Goal →
+        </button>
+
+      </div>
+
+    </section>
+
+    <!-- ===================================================
+         ONE GOAL
+    ==================================================== -->
+
+    <section id="s-goal">
+
+      <span class="eyebrow">
+        Choose Your One Goal
+      </span>
+
+      <h1 class="page-title">
+        Turn It Into a Plan
+      </h1>
+
+      <p class="lede">
+        Pick what matters most, define it clearly, and give
+        yourself a way to measure progress. Building momentum
+        on just ONE goal is the key to lasting change.
+      </p>
+
+      <div class="step" data-n="1">
+
+        <h3>
+          Pull one START forward
+        </h3>
+
+        <p class="hint">
+          Which one start feels most important right now?
+          Which would make the biggest difference if you
+          followed through?
+        </p>
+
+        <textarea
+          id="g-start"
+          rows="2"
+          placeholder="My ONE start to focus on this year is..."
+        ></textarea>
+
+      </div>
+
+      <div class="step" data-n="2">
+
+        <h3>
+          Turn it into a goal
+        </h3>
+
+        <p class="hint">
+          If this start really worked, what would be true
+          by the end of the year?
+        </p>
+
+        <textarea
+          id="g-goal"
+          rows="2"
+          placeholder="The outcome I want from this start is..."
+        ></textarea>
+
+      </div>
+
+      <div class="step" data-n="3">
+
+        <h3>
+          Define what "success" looks like
+        </h3>
+
+        <p class="hint">
+          Don't stay vague. Get real and specific.
+        </p>
+
+        <textarea
+          id="g-success-daily"
+          rows="2"
+          placeholder="What does success look like in daily life?"
+        ></textarea>
+
+        <textarea
+          id="g-success-know"
+          rows="2"
+          placeholder="How will you know you've succeeded?"
+        ></textarea>
+
+        <textarea
+          id="g-success-notice"
+          rows="2"
+          placeholder="What would someone else notice is different about you?"
+        ></textarea>
+
+      </div>
+
+      <div class="step" data-n="4">
+
+        <h3>
+          Make sure it feels like your real life
+        </h3>
+
+        <p class="hint">
+          Big dreams are welcome, but this has to match
+          your life right now.
+        </p>
+
+        <div class="grid2">
+
+          <textarea
+            id="g-need"
+            rows="3"
+            placeholder="What I need in place to succeed (time, energy, boundaries, support)..."
+          ></textarea>
+
+          <textarea
+            id="g-obstacle"
+            rows="3"
+            placeholder="What could get in the way — and my plan to handle it..."
+          ></textarea>
+
+        </div>
+
+      </div>
+
+      <div class="step" data-n="5">
+
+        <h3>
+          Start small to build momentum
+        </h3>
+
+        <p class="hint">
+          Progress builds momentum, and momentum changes your life.
+        </p>
+
+        <textarea
+          id="g-firststep"
+          rows="2"
+          placeholder="My first small step is..."
+        ></textarea>
+
+        <textarea
+          id="g-weekly"
+          rows="2"
+          placeholder="My weekly action is..."
+        ></textarea>
+
+        <textarea
+          id="g-month1"
+          rows="2"
+          placeholder="By the end of month one, progress looks like..."
+        ></textarea>
+
+      </div>
+
+      <div class="step" data-n="6">
+
+        <h3>
+          Tell someone
+        </h3>
+
+        <p class="hint">
+          Pick one person you respect and trust.
+          Saying it out loud makes it real.
+        </p>
+
+        <div class="grid2">
+
+          <textarea
+            id="g-who"
+            rows="2"
+            placeholder="I'm telling..."
+          ></textarea>
+
+          <textarea
+            id="g-remind"
+            rows="2"
+            placeholder="What I want them to remind me when it gets hard..."
+          ></textarea>
+
+        </div>
+
+      </div>
+
+      <div class="step" data-n="✓">
+
+        <h3>
+          After your first tiny action
+        </h3>
+
+        <textarea
+          id="g-feel"
+          rows="2"
+          placeholder="How did it feel to get started?"
+        ></textarea>
+
+        <p
+          class="hint"
+          style="margin-top:14px;"
+        >
+          Other small actions that will help you reach your goal:
+        </p>
+
+        <div
+          class="num-list"
+          id="g-actions-list"
+        ></div>
+
+      </div>
+
+      <div class="section-nav">
+
+        <button
+          type="button"
+          class="btn"
+          data-goto="s-looking-forward"
+        >
+          ← Looking Forward
+        </button>
+
+        <button
+          type="button"
+          class="btn primary"
+          data-goto="s-done"
+        >
+          Finish →
+        </button>
+
+      </div>
+
+    </section>
+
+    <!-- ===================================================
+         DONE
+    ==================================================== -->
+
+    <section id="s-done">
+
+      <div class="closing">
+
+        <div class="n">
+          You Did It.
+        </div>
+
+        <p>
+          You gave yourself the gift of time, honesty,
+          and a real pause. You looked back at the year
+          you lived, pulled out the highs, the lows,
+          and the lessons — then turned that data into a plan.
+        </p>
+
+        <div
+          class="quote"
+          style="text-align:left;display:inline-block;"
+        >
+          You're not here to stay the same.<br>
+          You're here to keep growing.
+        </div>
+
+        <p style="margin-top:28px;">
+          Come back to this. Add to it. Keep noticing
+          what's draining you, what's working, and what
+          you want more of. Now go make it happen.
+        </p>
+
+        <button
+          type="button"
+          class="btn primary"
+          data-goto="s-looking-back"
+          style="margin-top:10px;"
+        >
+          Back to the beginning
+        </button>
+
+        <br>
+
+        <button
+          type="button"
+          class="reset-btn"
+          id="reset-progress"
+        >
+          Reset all answers
+        </button>
+
+      </div>
+
+    </section>
+
+  </main>
+
+</div>
+
+<div
+  class="save-pill"
+  id="save-pill"
+>
+  <span class="dot"></span>
+  <span id="save-text">Saved</span>
+</div>
+
+<script>
+
+/* =========================================================
+   CONSTANTS
+========================================================= */
+
+const STORAGE_KEY = "best-year-2026";
+
+const MONTHS = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December"
+];
+
+const LIFE_AREAS = [
+  "Health",
+  "Work or School",
+  "Money",
+  "Love Life",
+  "Friendships",
+  "Happiness",
+  "Fun",
+  "Spirituality",
+  "Meaning & Purpose",
+  "Self-Love"
+];
+
+/* =========================================================
+   DEFAULT STATE
+========================================================= */
+
+function createDefaultState(){
+
+  return {
+
+    months:{},
+
+    q1_main:"",
+    q1_list:["","","","",""],
+    q1_needed:"",
+
+    q2_main:"",
+    q2_list:["","","","",""],
+    q2_threads:"",
+
+    q3:[
+      {high:"",learn:""},
+      {high:"",learn:""},
+      {high:"",learn:""},
+      {low:"",learn:""},
+      {low:"",learn:""}
+    ],
+
+    life:{},
+
+    stop:[
+      {main:"",why:"",cost:"",change:""},
+      {main:"",why:"",cost:"",change:""},
+      {main:"",why:"",cost:"",change:""}
+    ],
+
+    cont:[
+      {main:"",proves:"",moved:"",keep:""},
+      {main:"",proves:"",moved:"",keep:""},
+      {main:"",proves:"",moved:"",keep:""}
+    ],
+
+    start:[
+      {main:"",why:"",add:"",step:""},
+      {main:"",why:"",add:"",step:""},
+      {main:"",why:"",add:"",step:""}
+    ],
+
+    goal:{},
+
+    g_actions:["","","","",""],
+
+    selectedMonth:"January"
+  };
+}
+
+let state = createDefaultState();
+
+let saveTimer = null;
+
+/* =========================================================
+   SAFE STATE LOADING
+========================================================= */
+
+function isObject(value){
+
+  return (
+    value !== null &&
+    typeof value === "object" &&
+    !Array.isArray(value)
+  );
+}
+
+function safeArray(value, fallback){
+
+  return Array.isArray(value)
+    ? value
+    : fallback;
+}
+
+function normalizeState(loaded){
+
+  const defaults = createDefaultState();
+
+  if(!isObject(loaded)){
+    return defaults;
+  }
+
+  const normalized = {
+    ...defaults,
+    ...loaded
+  };
+
+  normalized.months =
+    isObject(loaded.months)
+      ? loaded.months
+      : {};
+
+  normalized.q1_list =
+    safeArray(
+      loaded.q1_list,
+      defaults.q1_list
+    );
+
+  normalized.q2_list =
+    safeArray(
+      loaded.q2_list,
+      defaults.q2_list
+    );
+
+  normalized.q3 =
+    safeArray(
+      loaded.q3,
+      defaults.q3
+    );
+
+  normalized.stop =
+    safeArray(
+      loaded.stop,
+      defaults.stop
+    );
+
+  normalized.cont =
+    safeArray(
+      loaded.cont,
+      defaults.cont
+    );
+
+  normalized.start =
+    safeArray(
+      loaded.start,
+      defaults.start
+    );
+
+  normalized.goal =
+    isObject(loaded.goal)
+      ? loaded.goal
+      : {};
+
+  normalized.g_actions =
+    safeArray(
+      loaded.g_actions,
+      defaults.g_actions
+    );
+
+  if(
+    !MONTHS.includes(normalized.selectedMonth)
+  ){
+    normalized.selectedMonth = "January";
+  }
+
+  return normalized;
+}
+
+function loadState(){
+
+  try{
+
+    const raw =
+      localStorage.getItem(STORAGE_KEY);
+
+    if(raw){
+
+      const loaded =
+        JSON.parse(raw);
+
+      state =
+        normalizeState(loaded);
+    }
+
+  }catch(error){
+
+    console.error(
+      "Saved data could not be loaded:",
+      error
+    );
+
+    localStorage.removeItem(
+      STORAGE_KEY
+    );
+
+    state =
+      createDefaultState();
+  }
+
+  render();
+}
+
+/* =========================================================
+   SAVE
+========================================================= */
+
+function queueSave(){
+
+  clearTimeout(saveTimer);
+
+  const pill =
+    document.getElementById("save-pill");
+
+  const saveText =
+    document.getElementById("save-text");
+
+  saveText.textContent =
+    "Saving…";
+
+  pill.classList.add("show");
+
+  saveTimer =
+    setTimeout(() => {
+
+      try{
+
+        localStorage.setItem(
+          STORAGE_KEY,
+          JSON.stringify(state)
+        );
+
+        saveText.textContent =
+          "Saved";
+
+      }catch(error){
+
+        console.error(
+          "Save failed:",
+          error
+        );
+
+        saveText.textContent =
+          "Save failed";
+      }
+
+      setTimeout(() => {
+
+        pill.classList.remove("show");
+
+      },1400);
+
+    },300);
+
+  updateProgress();
+}
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+function goSection(id){
+
+  const target =
+    document.getElementById(id);
+
+  if(!target){
+
+    console.error(
+      "Section not found:",
+      id
+    );
+
+    return;
+  }
+
+  document
+    .querySelectorAll("section")
+    .forEach(section => {
+
+      section.classList.toggle(
+        "active",
+        section.id === id
+      );
+
+    });
+
+  document
+    .querySelectorAll(".nav__item")
+    .forEach(item => {
+
+      item.classList.toggle(
+        "active",
+        item.dataset.section === id
+      );
+
+    });
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
+  updateProgress();
+}
+
+/* =========================================================
+   UNIVERSAL CLICK HANDLER
+========================================================= */
+
+document.addEventListener(
+  "click",
+  event => {
+
+    const navItem =
+      event.target.closest(
+        ".nav__item"
+      );
+
+    const gotoButton =
+      event.target.closest(
+        "[data-goto]"
+      );
+
+    if(navItem){
+
+      event.preventDefault();
+
+      goSection(
+        navItem.dataset.section
+      );
+
+      return;
+    }
+
+    if(gotoButton){
+
+      event.preventDefault();
+
+      goSection(
+        gotoButton.dataset.goto
+      );
+
+    }
+
+  }
+);
+
+/* =========================================================
+   MONTH WHEEL
+========================================================= */
+
+function buildWheel(){
+
+  const wheel =
+    document.getElementById("wheel");
+
+  wheel
+    .querySelectorAll(".month-btn")
+    .forEach(button => button.remove());
+
+  const radius = 112;
+
+  MONTHS.forEach((month,index) => {
+
+    const button =
+      document.createElement("button");
+
+    button.type = "button";
+
+    button.className =
+      "month-btn";
+
+    button.textContent =
+      month.slice(0,3);
+
+    button.dataset.month =
+      month;
+
+    const angle =
+      (index / 12) *
+      Math.PI * 2 -
+      Math.PI / 2;
+
+    const x =
+      140 +
+      radius *
+      Math.cos(angle);
+
+    const y =
+      140 +
+      radius *
+      Math.sin(angle);
+
+    button.style.left =
+      x + "px";
+
+    button.style.top =
+      y + "px";
+
+    button.addEventListener(
+      "click",
+      () => selectMonth(month)
+    );
+
+    wheel.appendChild(button);
+  });
+}
+
+function selectMonth(month){
+
+  state.selectedMonth =
+    month;
+
+  const title =
+    document.getElementById(
+      "month-panel-title"
+    );
+
+  const input =
+    document.getElementById(
+      "month-input"
+    );
+
+  if(title){
+    title.textContent =
+      month;
+  }
+
+  if(input){
+    input.value =
+      state.months[month] || "";
+  }
+
+  document
+    .querySelectorAll(".month-btn")
+    .forEach(button => {
+
+      button.classList.toggle(
+        "selected",
+        button.dataset.month === month
+      );
+
+    });
+}
+
+function refreshWheel(){
+
+  document
+    .querySelectorAll(".month-btn")
+    .forEach(button => {
+
+      const value =
+        state.months[
+          button.dataset.month
+        ] || "";
+
+      button.classList.toggle(
+        "filled",
+        value.trim().length > 0
+      );
+
+    });
+
+  const count =
+    Object.values(
+      state.months
+    )
+    .filter(
+      value =>
+        typeof value === "string" &&
+        value.trim().length > 0
+    )
+    .length;
+
+  const counter =
+    document.getElementById(
+      "wheel-count"
+    );
+
+  if(counter){
+    counter.textContent =
+      count + "/12";
+  }
+}
+
+/* =========================================================
+   NUMBERED LIST
+========================================================= */
+
+function buildNumList(
+  containerId,
+  array,
+  onChange
+){
+
+  const container =
+    document.getElementById(
+      containerId
+    );
+
+  if(!container){
+    return;
+  }
+
+  container.innerHTML = "";
+
+  const safe =
+    Array.isArray(array)
+      ? array
+      : [];
+
+  safe.forEach(
+    (value,index) => {
+
+      const row =
+        document.createElement("div");
+
+      row.className = "row";
+
+      const indexLabel =
+        document.createElement("span");
+
+      indexLabel.className =
+        "idx";
+
+      indexLabel.textContent =
+        (index + 1) + ".";
+
+      const input =
+        document.createElement("input");
+
+      input.type = "text";
+
+      input.value =
+        typeof value === "string"
+          ? value
+          : "";
+
+      input.placeholder =
+        "...";
+
+      input.addEventListener(
+        "input",
+        () => {
+
+          onChange(
+            index,
+            input.value
+          );
+
+          queueSave();
+
+        }
+      );
+
+      row.appendChild(indexLabel);
+      row.appendChild(input);
+
+      container.appendChild(row);
+
+    }
+  );
+}
+
+/* =========================================================
+   Q3
+========================================================= */
+
+function buildQ3(){
+
+  const container =
+    document.getElementById(
+      "q3-pairs"
+    );
+
+  if(!container){
+    return;
+  }
+
+  container.innerHTML = "";
+
+  const labels = [
+    "High Point",
+    "High Point",
+    "High Point",
+    "Low Point",
+    "Low Point"
+  ];
+
+  state.q3.forEach(
+    (pair,index) => {
+
+      const key =
+        index < 3
+          ? "high"
+          : "low";
+
+      const wrapper =
+        document.createElement("div");
+
+      wrapper.style.marginLeft =
+        "40px";
+
+      wrapper.style.marginBottom =
+        "26px";
+
+      wrapper.innerHTML = `
+
+        <label class="flabel">
+          ${labels[index]}
+        </label>
+
+        <textarea
+          rows="2"
+          style="margin-bottom:8px;"
+          placeholder="Name the moment..."
+        ></textarea>
+
+        <label class="flabel">
+          What I learned about myself based on this ${key} point
+        </label>
+
+        <textarea
+          rows="2"
+          placeholder="..."
+        ></textarea>
+      `;
+
+      const textareas =
+        wrapper.querySelectorAll(
+          "textarea"
+        );
+
+      const mainTextarea =
+        textareas[0];
+
+      const learnTextarea =
+        textareas[1];
+
+      mainTextarea.value =
+        pair[key] || "";
+
+      learnTextarea.value =
+        pair.learn || "";
+
+      mainTextarea.addEventListener(
+        "input",
+        () => {
+
+          state.q3[index][key] =
+            mainTextarea.value;
+
+          queueSave();
+
+        }
+      );
+
+      learnTextarea.addEventListener(
+        "input",
+        () => {
+
+          state.q3[index].learn =
+            learnTextarea.value;
+
+          queueSave();
+
+        }
+      );
+
+      container.appendChild(
+        wrapper
+      );
+
+    }
+  );
+}
+
+/* =========================================================
+   LIFE CHECK-IN
+========================================================= */
+
+function buildLife(){
+
+  const container =
+    document.getElementById(
+      "life-list"
+    );
+
+  if(!container){
+    return;
+  }
+
+  container.innerHTML = "";
+
+  LIFE_AREAS.forEach(area => {
+
+    if(
+      !isObject(state.life[area])
+    ){
+
+      state.life[area] = {
+        val:5,
+        why:""
+      };
+
+    }
+
+    const life =
+      state.life[area];
+
+    const value =
+      Number.isFinite(
+        Number(life.val)
+      )
+        ? Math.min(
+            10,
+            Math.max(
+              1,
+              Number(life.val)
+            )
+          )
+        : 5;
+
+    life.val = value;
+
+    const item =
+      document.createElement("div");
+
+    item.className =
+      "life-item";
+
+    item.innerHTML = `
+
+      <div class="life-head">
+
+        <span class="lname">
+          ${area}
+        </span>
+
+        <span class="lval mono">
+          ${value}
+        </span>
+
+      </div>
+
+      <input
+        type="range"
+        min="1"
+        max="10"
+        value="${value}"
+      >
+
+      <div class="life-scale">
+        <span>Hate it</span>
+        <span>Love it</span>
+      </div>
+
+      <textarea
+        rows="2"
+        placeholder="Why?"
+      ></textarea>
+
+    `;
+
+    const range =
+      item.querySelector(
+        'input[type="range"]'
+      );
+
+    const valueDisplay =
+      item.querySelector(
+        ".lval"
+      );
+
+    const why =
+      item.querySelector(
+        "textarea"
+      );
+
+    why.value =
+      life.why || "";
+
+    range.addEventListener(
+      "input",
+      () => {
+
+        life.val =
+          Number(range.value);
+
+        valueDisplay.textContent =
+          range.value;
+
+        queueSave();
+
+      }
+    );
+
+    why.addEventListener(
+      "input",
+      () => {
+
+        life.why =
+          why.value;
+
+        queueSave();
+
+      }
+    );
+
+    container.appendChild(
+      item
+    );
+
+  });
+}
+
+/* =========================================================
+   STOP / CONTINUE / START
+========================================================= */
+
+function buildSC(
+  containerId,
+  array,
+  type
+){
+
+  const configs = {
+
+    stop:{
+      tag:"I will STOP",
+      cls:"stop",
+      ph:"I will stop...",
+      questions:[
+        ["why","Why does this need to stop?"],
+        ["cost","What has this cost you so far?"],
+        ["change","What will change when you stop?"]
+      ]
+    },
+
+    cont:{
+      tag:"I will CONTINUE",
+      cls:"cont",
+      ph:"I will continue...",
+      questions:[
+        ["proves","What proves this is working for you?"],
+        ["moved","How did this move your life in the right direction?"],
+        ["keep","What's one simple way to keep this going?"]
+      ]
+    },
+
+    start:{
+      tag:"I will START",
+      cls:"start",
+      ph:"I will start...",
+      questions:[
+        ["why","Why do you want to start this?"],
+        ["add","What will this add to your life?"],
+        ["step","What's an easy first step?"]
+      ]
+    }
+
+  };
+
+  const config =
+    configs[type];
+
+  const container =
+    document.getElementById(
+      containerId
+    );
+
+  if(!container){
+    return;
+  }
+
+  container.innerHTML = "";
+
+  const safe =
+    Array.isArray(array)
+      ? array
+      : [];
+
+  safe.forEach(
+    (item,index) => {
+
+      if(!isObject(item)){
+        item = {};
+        safe[index] = item;
+      }
+
+      const block =
+        document.createElement("div");
+
+      block.className =
+        "sc-block";
+
+      block.innerHTML = `
+
+        <div class="sc-head">
+
+          <span class="tag ${config.cls}">
+            ${config.tag}
+          </span>
+
+        </div>
+
+        <textarea
+          class="sc-main"
+          rows="1"
+          placeholder="${config.ph}"
+        ></textarea>
+
+        <div class="sc-grid">
+
+          ${config.questions
+            .map(
+              ([key,label]) => `
+
+                <div>
+
+                  <span class="mini-label">
+                    ${label}
+                  </span>
+
+                  <textarea
+                    data-key="${key}"
+                  ></textarea>
+
+                </div>
+
+              `
+            )
+            .join("")}
+
+        </div>
+      `;
+
+      const main =
+        block.querySelector(
+          ".sc-main"
+        );
+
+      main.value =
+        item.main || "";
+
+      main.addEventListener(
+        "input",
+        () => {
+
+          item.main =
+            main.value;
+
+          queueSave();
+
+        }
+      );
+
+      block
+        .querySelectorAll(
+          ".sc-grid textarea"
+        )
+        .forEach(textarea => {
+
+          const key =
+            textarea.dataset.key;
+
+          textarea.value =
+            item[key] || "";
+
+          textarea.addEventListener(
+            "input",
+            () => {
+
+              item[key] =
+                textarea.value;
+
+              queueSave();
+
+            }
+          );
+
+        });
+
+      container.appendChild(
+        block
+      );
+
+    }
+  );
+}
+
+/* =========================================================
+   GOAL
+========================================================= */
+
+const GOAL_FIELDS = [
+
+  "g-start",
+  "g-goal",
+
+  "g-success-daily",
+  "g-success-know",
+  "g-success-notice",
+
+  "g-need",
+  "g-obstacle",
+
+  "g-firststep",
+  "g-weekly",
+  "g-month1",
+
+  "g-who",
+  "g-remind",
+
+  "g-feel"
+
+];
+
+function bindGoal(){
+
+  GOAL_FIELDS.forEach(id => {
+
+    const element =
+      document.getElementById(id);
+
+    if(!element){
+      return;
+    }
+
+    element.value =
+      state.goal[id] || "";
+
+    element.oninput =
+      () => {
+
+        state.goal[id] =
+          element.value;
+
+        queueSave();
+
+      };
+
+  });
+}
+
+/* =========================================================
+   BASIC FIELD BINDINGS
+========================================================= */
+
+function bindBasicFields(){
+
+  const mappings = {
+
+    "q1-main":"q1_main",
+    "q1-needed":"q1_needed",
+    "q2-main":"q2_main",
+    "q2-threads":"q2_threads"
+
+  };
+
+  Object.entries(
+    mappings
+  ).forEach(
+    ([elementId,stateKey]) => {
+
+      const element =
+        document.getElementById(
+          elementId
+        );
+
+      if(!element){
+        return;
+      }
+
+      element.value =
+        state[stateKey] || "";
+
+      element.oninput =
+        () => {
+
+          state[stateKey] =
+            element.value;
+
+          queueSave();
+
+        };
+
+    }
+  );
+
+  const monthInput =
+    document.getElementById(
+      "month-input"
+    );
+
+  if(monthInput){
+
+    monthInput.oninput =
+      () => {
+
+        state.months[
+          state.selectedMonth
+        ] =
+          monthInput.value;
+
+        refreshWheel();
+
+        queueSave();
+
+      };
+
+  }
+}
+
+/* =========================================================
+   PROGRESS
+========================================================= */
+
+function countFilled(value){
+
+  let filled = 0;
+  let total = 0;
+
+  function walk(item){
+
+    if(typeof item === "string"){
+
+      total++;
+
+      if(item.trim().length > 0){
+        filled++;
+      }
+
+      return;
+    }
+
+    if(typeof item === "number"){
+
+      total++;
+      filled++;
+
+      return;
+    }
+
+    if(Array.isArray(item)){
+
+      item.forEach(walk);
+
+      return;
+    }
+
+    if(
+      item &&
+      typeof item === "object"
+    ){
+
+      Object.values(item)
+        .forEach(walk);
+
+    }
+
+  }
+
+  walk(value);
+
+  return {
+    filled,
+    total
+  };
+}
+
+function updateProgress(){
+
+  const result =
+    countFilled(state);
+
+  const percentage =
+    result.total
+      ? Math.round(
+          (
+            result.filled /
+            result.total
+          ) * 100
+        )
+      : 0;
+
+  const progress =
+    document.getElementById(
+      "progress-fill"
+    );
+
+  if(progress){
+    progress.style.width =
+      percentage + "%";
+  }
+
+  const backDone =
+    Object.values(state.months)
+      .some(
+        value =>
+          typeof value === "string" &&
+          value.trim()
+      )
+      ||
+      Boolean(
+        state.q1_main &&
+        state.q1_main.trim()
+      )
+      ||
+      Boolean(
+        state.q2_main &&
+        state.q2_main.trim()
+      );
+
+  const checkinDone =
+    Object.values(
+      state.life
+    )
+    .some(
+      life =>
+        life &&
+        typeof life.why === "string" &&
+        life.why.trim()
+    );
+
+  const forwardDone =
+    [
+      ...state.stop,
+      ...state.cont,
+      ...state.start
+    ]
+    .some(
+      item =>
+        item &&
+        typeof item.main === "string" &&
+        item.main.trim()
+    );
+
+  const goalDone =
+    Object.values(
+      state.goal
+    )
+    .some(
+      value =>
+        typeof value === "string" &&
+        value.trim()
+    );
+
+  document
+    .getElementById("dot-back")
+    ?.classList.toggle(
+      "done",
+      Boolean(backDone)
+    );
+
+  document
+    .getElementById("dot-checkin")
+    ?.classList.toggle(
+      "done",
+      Boolean(checkinDone)
+    );
+
+  document
+    .getElementById("dot-forward")
+    ?.classList.toggle(
+      "done",
+      Boolean(forwardDone)
+    );
+
+  document
+    .getElementById("dot-goal")
+    ?.classList.toggle(
+      "done",
+      Boolean(goalDone)
+    );
+
+  document
+    .getElementById("dot-done")
+    ?.classList.toggle(
+      "done",
+      percentage >= 90
+    );
+}
+
+/* =========================================================
+   RESET
+========================================================= */
+
+function resetProgress(){
+
+  const confirmed =
+    window.confirm(
+      "Reset all of your Best Year 2026 answers? This cannot be undone."
+    );
+
+  if(!confirmed){
+    return;
+  }
+
+  try{
+
+    localStorage.removeItem(
+      STORAGE_KEY
+    );
+
+  }catch(error){
+
+    console.error(
+      "Could not clear saved data:",
+      error
+    );
+
+  }
+
+  state =
+    createDefaultState();
+
+  render();
+
+  goSection(
+    "s-looking-back"
+  );
+}
+
+document
+  .getElementById("reset-progress")
+  ?.addEventListener(
+    "click",
+    resetProgress
+  );
+
+/* =========================================================
+   RENDER
+========================================================= */
+
+function render(){
+
+  try{
+
+    buildWheel();
+
+    selectMonth(
+      state.selectedMonth ||
+      "January"
+    );
+
+    refreshWheel();
+
+    bindBasicFields();
+
+    buildNumList(
+      "q1-list",
+      state.q1_list,
+      (index,value) => {
+
+        state.q1_list[index] =
+          value;
+
+      }
+    );
+
+    buildNumList(
+      "q2-list",
+      state.q2_list,
+      (index,value) => {
+
+        state.q2_list[index] =
+          value;
+
+      }
+    );
+
+    buildQ3();
+
+    buildLife();
+
+    buildSC(
+      "stop-list",
+      state.stop,
+      "stop"
+    );
+
+    buildSC(
+      "cont-list",
+      state.cont,
+      "cont"
+    );
+
+    buildSC(
+      "start-list",
+      state.start,
+      "start"
+    );
+
+    bindGoal();
+
+    buildNumList(
+      "g-actions-list",
+      state.g_actions,
+      (index,value) => {
+
+        state.g_actions[index] =
+          value;
+
+      }
+    );
+
+    updateProgress();
+
+  }catch(error){
+
+    console.error(
+      "Application render error:",
+      error
+    );
+
+    /*
+      If an old saved structure somehow survives,
+      automatically reset it rather than leaving
+      the entire application unusable.
+    */
+
+    try{
+
+      localStorage.removeItem(
+        STORAGE_KEY
+      );
+
+    }catch(clearError){
+
+      console.error(
+        "Could not clear broken state:",
+        clearError
+      );
+
+    }
+
+    state =
+      createDefaultState();
+
+    /*
+      Render once more from clean state.
+    */
+
+    try{
+
+      buildWheel();
+      selectMonth("January");
+      refreshWheel();
+      bindBasicFields();
+      buildNumList(
+        "q1-list",
+        state.q1_list,
+        (i,v) => state.q1_list[i] = v
+      );
+      buildNumList(
+        "q2-list",
+        state.q2_list,
+        (i,v) => state.q2_list[i] = v
+      );
+      buildQ3();
+      buildLife();
+      buildSC(
+        "stop-list",
+        state.stop,
+        "stop"
+      );
+      buildSC(
+        "cont-list",
+        state.cont,
+        "cont"
+      );
+      buildSC(
+        "start-list",
+        state.start,
+        "start"
+      );
+      bindGoal();
+      buildNumList(
+        "g-actions-list",
+        state.g_actions,
+        (i,v) => state.g_actions[i] = v
+      );
+      updateProgress();
+
+    }catch(finalError){
+
+      console.error(
+        "Fatal application error:",
+        finalError
+      );
+
+      alert(
+        "The application could not initialize. Please refresh the page."
+      );
+
+    }
+
+  }
+}
+
+/* =========================================================
+   START APPLICATION
+========================================================= */
+
+loadState();
+
+</script>
+
+</body>
+</html>
